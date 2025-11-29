@@ -148,10 +148,8 @@ def set_system_password(password: str):
 def main():
 # Preventing repeated execution:
     if MARKER.exists():
-        proc = subprocess.run(
-            ["rm /home/bbuser/.config/autorun/bbpasslauncher.desktop"]
-        print("Password already changed, removing autorun and exiting.")
-        )
+        print("Script has already been run on this user account, exiting now.")
+        return
     else:
         proc = subprocess.run(
             ["touch /home/bbuser/.bb_password_done"]
@@ -184,6 +182,8 @@ def main():
         ok = set_system_password(pw1)
         if ok:
             print("Password has been updated.")
+            file_path= Path("/home/bbuser/.bb_password_done")
+            file_path.touch()
             sys.exit(0)
         else:
             print("Failed to update password. Try again.\n")
