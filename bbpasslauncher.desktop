@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+
+Name=BB Password Check
+
+Exec=gnome-terminal -- /usr/bin/python3 /usr/local/bin/bbscripts/bbPasswordCheck.py
+X-GNOME-Autostart-enabled=true
+Terminal=true
+Type=Application
+Hidden=false
